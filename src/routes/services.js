@@ -52,11 +52,13 @@ router.get('/divide', (req, res, next) => {
     let dvdr = req.query.divider;
     let rs = Number(num) / Number(dvdr);
 
-    if(rs >= 0){
-        res.status(200).send(rs);
+    console.log('type: '+typeof rs+' ans: '+String(rs));
+
+    if(rs !== Infinity){
+        res.status(200).send(String(rs));
     }
-    else if(dvdr == 0){
-        res.status(500).send(rs);
+    else if(rs == Infinity){
+        res.status(500).send(String(rs));
     }
 });
 

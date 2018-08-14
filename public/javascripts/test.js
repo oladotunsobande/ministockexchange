@@ -20,10 +20,10 @@ describe('Test REST api', function() {
         .get('/api/divide')
         .query({number: 10, divider: 2})
         .end((err, res) => {
-            console.log('Resp: '+res);
+            //console.log('Resp 1: '+JSON.stringify(res));
             testAsync(done, function(){
                 expect(res).to.have.status(200);
-                assert.equal(5, res.body.result);
+                assert.equal(5, res.text);
                 done();
             }.bind(res));
         });
@@ -36,6 +36,7 @@ describe('Test REST api', function() {
         .get('/api/divide')
         .query({number: 10, divider: 0})
         .end((err, res) => {
+            //console.log('Resp 2: '+JSON.stringify(res));
             testAsync(done, function(){
                 expect(res).to.have.status(500);
                 done();
@@ -50,9 +51,10 @@ describe('Test REST api', function() {
         .get('/api/divide')
         .query({number: 10, divider: 2})
         .end((err, res) => {
+            //console.log('Resp 3: '+JSON.stringify(res));
             testAsync(done, function(){
                 expect(res).to.have.status(200);
-                assert.equal(6, res.body.result);
+                assert.equal(6, res.text);
                 done();
             }.bind(res));
         });

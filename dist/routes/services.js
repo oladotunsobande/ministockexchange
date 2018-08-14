@@ -4,6 +4,14 @@ Object.defineProperty(exports, "__esModule", {
     value: true
 });
 
+var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; /*
+                                                                                                                                                                                                                                                                               *  APP:        Mini Stock Exchange
+                                                                                                                                                                                                                                                                               *  MODULE:     REST Web Service Endpoints
+                                                                                                                                                                                                                                                                               * 
+                                                                                                                                                                                                                                                                               *  DEVELOPER:  Oladotun Sobande
+                                                                                                                                                                                                                                                                               *  CREATED ON: 13th August 2018
+                                                                                                                                                                                                                                                                               * */
+
 var _express = require('express');
 
 var _express2 = _interopRequireDefault(_express);
@@ -18,13 +26,7 @@ var _rws2 = _interopRequireDefault(_rws);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var router = _express2.default.Router(); /*
-                                          *  APP:        Mini Stock Exchange
-                                          *  MODULE:     REST Web Service Endpoints
-                                          * 
-                                          *  DEVELOPER:  Oladotun Sobande
-                                          *  CREATED ON: 13th August 2018
-                                          * */
+var router = _express2.default.Router();
 
 var conn = null;
 
@@ -60,10 +62,12 @@ router.get('/divide', function (req, res, next) {
     var dvdr = req.query.divider;
     var rs = Number(num) / Number(dvdr);
 
-    if (rs >= 0) {
-        res.status(200).send(rs);
-    } else if (dvdr == 0) {
-        res.status(500).send(rs);
+    console.log('type: ' + (typeof rs === 'undefined' ? 'undefined' : _typeof(rs)) + ' ans: ' + String(rs));
+
+    if (rs !== Infinity) {
+        res.status(200).send(String(rs));
+    } else if (rs == Infinity) {
+        res.status(500).send(String(rs));
     }
 });
 
