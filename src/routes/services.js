@@ -8,7 +8,7 @@
 
 import express from 'express';
 
-import MyDb from '../modules/data/mydb';
+import MyDb from '../modules/db/mydb';
 import Rws from '../modules/api/rws';
 
 var router = express.Router();
@@ -37,7 +37,7 @@ initDb()
     conn = res;
 })
 .catch((err) => {
-    console.log(err);
+    console.log('DB ini error: '+err);
 });
 
 
@@ -47,27 +47,55 @@ initDb()
 *==================================================
 */
 
-router.post('/signup/:userType', (req, res, next) => {
-    var usr_typ = req.params.userType;
-    var py_ld = req.body;
+router.get('/divide', (req, res, next) => {
+    let num = req.query.number;
+    let dvdr = req.query.divider;
+    let rs = Number(num) / Number(dvdr);
+
+    if(rs >= 0){
+        res.status(200).send(rs);
+    }
+    else if(dvdr == 0){
+        res.status(500).send(rs);
+    }
+});
+
+router.get('/trade', (req, res, next) => {
+    let cty_cd = req.query.CountryCode;
+    let cat_nm = req.query.Category;
+    let bid = req.query.BaseBid;
 
     res.set('Content-Type', 'application/json');
 
-    var wbs = new Rws(conn);
+    if(bid !== '' && cat_nm !== '' && cty_cd !== ''){
+        var wbs = new Rws(conn);
 
-    wbs.onboard(usr_typ, py_ld)
-    .then((rs) => {
-        if(rs == 1){
-            res.status(200).send({ "status": true, "message": "User account created successfully" });
+        wbs.filterWinner(bid, cat_nm, cty_cd)
+        .then((rs) => {
+            res.status(200).send({ "message": rs });
+        })
+        .catch((err) => {
+            console.log('Err: '+err);
+            res.status(500).send({ "error": "Oops! Something went wrong" });
+        });
+    }
+    else{
+        let msg;
+
+        if(bid == '' && cat_nm !== '' && cty_cd !== ''){
+            msg = 'Provide value for BaseBid';
         }
-        else if (rs == 'Email Exists'){
-            res.status(200).send({ "status": false, "message": "User email already exists" });
+        else if(bid !== '' && cat_nm == '' && cty_cd !== ''){
+            msg = 'Provide value for Category';
         }
-    })
-    .catch((err) => {
-        console.log('Err: '+err);
-        res.status(500).send({ "error": "Oops! Something went wrong" });
-    });
+        else if(bid !== '' && cat_nm !== '' && cty_cd == ''){
+            msg = 'Provide value for CountryCode';
+        }
+        else if(bid == '' && cat_nm == '' && cty_cd == ''){
+            msg = 'Provide values for BaseBid, Category and CountryCode';
+        }
+        res.status(200).send({ "message": msg });
+    }
 });
 
 export default router;
