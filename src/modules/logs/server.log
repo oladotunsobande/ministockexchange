@@ -1,60 +1,58 @@
-[ 14-AUG-2018 12:42:1 ] - [ 14-AUG-2018 12:42:1 ] - Connection Pool Created 
- 
-[ 14-AUG-2018 12:43:32 ] - [ 14-AUG-2018 12:43:32 ] - Connection Pool Created 
- 
-[ 14-AUG-2018 12:46:53 ] - [ 14-AUG-2018 12:46:53 ] - Connection Pool Created 
- 
-[ 14-AUG-2018 12:53:19 ] - [ 14-AUG-2018 12:53:19 ] - Connection Pool Created 
- 
-[ 14-AUG-2018 12:56:38 ] - [ 14-AUG-2018 12:56:38 ] - Connection Pool Created 
- 
-[ 14-AUG-2018 12:58:46 ] - [ 14-AUG-2018 12:58:46 ] - Connection Pool Created 
- 
-[ 14-AUG-2018 13:21:53 ] - [ 14-AUG-2018 13:21:53 ] - Connection Pool Created 
- 
-[ 14-AUG-2018 13:47:48 ] - [ 14-AUG-2018 13:47:48 ] - Connection Pool Created 
- 
-[ 14-AUG-2018 14:48:10 ] - [ 14-AUG-2018 14:48:10 ] - Connection Pool Created 
- 
-[ 14-AUG-2018 14:53:56 ] - [ 14-AUG-2018 14:53:56 ] - Connection Pool Created 
- 
-[ 14-AUG-2018 15:1:51 ] - [ 14-AUG-2018 15:1:51 ] - Connection Pool Created 
- 
-[ 14-AUG-2018 15:9:20 ] - [ 14-AUG-2018 15:9:20 ] - Connection Pool Created 
- 
-[ 14-AUG-2018 15:13:53 ] - [ 14-AUG-2018 15:13:53 ] - Connection Pool Created 
- 
-[ 14-AUG-2018 15:15:12 ] - [ 14-AUG-2018 15:15:12 ] - Connection Pool Created 
- 
-[ 14-AUG-2018 15:20:53 ] - [ 14-AUG-2018 15:20:53 ] - Connection Pool Created 
- 
-[ 14-AUG-2018 15:23:57 ] - [ 14-AUG-2018 15:23:57 ] - Connection Pool Created 
- 
-[ 14-AUG-2018 15:27:18 ] - [ 14-AUG-2018 15:27:18 ] - Connection Pool Created 
- 
-[ 14-AUG-2018 16:35:30 ] - [ 14-AUG-2018 16:35:30 ] - Connection Pool Created 
- 
-[ 14-AUG-2018 16:39:32 ] - [ 14-AUG-2018 16:39:32 ] - Connection Pool Created 
- 
-[ 14-AUG-2018 16:46:40 ] - [ 14-AUG-2018 16:46:40 ] - Connection Pool Created 
- 
-[ 14-AUG-2018 16:49:0 ] - [ 14-AUG-2018 16:49:0 ] - Connection Pool Created 
- 
-[ 14-AUG-2018 16:54:17 ] - [ 14-AUG-2018 16:54:17 ] - Connection Pool Created 
- 
-[ 14-AUG-2018 16:55:11 ] - [ 14-AUG-2018 16:55:11 ] - Connection Pool Created 
- 
-[ 14-AUG-2018 16:57:11 ] - [ 14-AUG-2018 16:57:11 ] - Connection Pool Created 
- 
-[ 14-AUG-2018 16:58:0 ] - [ 14-AUG-2018 16:58:0 ] - Connection Pool Created 
- 
-[ 14-AUG-2018 16:59:21 ] - [ 14-AUG-2018 16:59:21 ] - Connection Pool Created 
- 
-[ 14-AUG-2018 16:59:59 ] - [ 14-AUG-2018 16:59:59 ] - Connection Pool Created 
- 
-[ 14-AUG-2018 17:1:0 ] - [ 14-AUG-2018 17:1:0 ] - Connection Pool Created 
- 
-[ 14-AUG-2018 17:2:49 ] - [ 14-AUG-2018 17:2:49 ] - Connection Pool Created 
- 
-[ 14-AUG-2018 17:4:32 ] - [ 14-AUG-2018 17:4:32 ] - Connection Pool Created 
- 
+[ 15-AUG-2018 12:13:18 ] - Connection Pool Created 
+[ 15-AUG-2018 12:17:13 ] - Connection Pool Created 
+[ 15-AUG-2018 12:25:59 ] - Connection Pool Created 
+[ 15-AUG-2018 12:36:58 ] - BaseTargeting: {C1, Failed},{C2, Failed},{C3, Failed} 
+[ 15-AUG-2018 13:12:40 ] - BaseTargeting: {C1, Passed},{C2, Passed},{C3, Failed} 
+[ 15-AUG-2018 13:20:30 ] - Connection Pool Created 
+[ 15-AUG-2018 13:22:14 ] - BaseTargeting: {C1, Passed},{C2, Passed},{C3, Failed} 
+[ 15-AUG-2018 13:23:38 ] - Connection Pool Created 
+[ 15-AUG-2018 13:23:51 ] - BaseTargeting: {C1, Passed},{C2, Passed},{C3, Failed} 
+[ 15-AUG-2018 13:27:21 ] - Connection Pool Created 
+[ 15-AUG-2018 13:27:33 ] - BaseTargeting: {C1, Passed},{C2, Passed},{C3, Failed} 
+[ 15-AUG-2018 13:34:54 ] - BaseTargeting: {C1, Passed},{C2, Passed},{C3, Failed} 
+[ 15-AUG-2018 13:35:18 ] - BaseTargeting: {C1, Passed},{C2, Passed},{C3, Failed} 
+[ 15-AUG-2018 13:35:46 ] - BaseTargeting: {C1, Passed},{C2, Passed},{C3, Failed} 
+[ 15-AUG-2018 13:41:7 ] - Connection Pool Created 
+[ 15-AUG-2018 13:41:28 ] - BaseTargeting: {C1, Passed},{C2, Passed},{C3, Failed} 
+[ 15-AUG-2018 14:27:27 ] - Connection Pool Created 
+[ 15-AUG-2018 14:27:44 ] - BaseTargeting: {C1, Passed},{C2, Passed},{C3, Failed} 
+[ 15-AUG-2018 14:30:55 ] - Connection Pool Created 
+[ 15-AUG-2018 14:32:10 ] - BaseTargeting: {C1, Passed},{C2, Passed},{C3, Failed} 
+[ 15-AUG-2018 14:33:11 ] - Connection Pool Created 
+[ 15-AUG-2018 14:33:16 ] - BaseTargeting: {C1, Passed},{C2, Passed},{C3, Failed} 
+[ 15-AUG-2018 14:35:44 ] - Connection Pool Created 
+[ 15-AUG-2018 14:36:32 ] - BaseTargeting: {C1, Passed},{C2, Passed},{C3, Failed} 
+[ 15-AUG-2018 14:41:22 ] - Connection Pool Created 
+[ 15-AUG-2018 14:41:28 ] - BaseTargeting: {C1, Passed},{C2, Passed},{C3, Failed} 
+[ 15-AUG-2018 14:41:28 ] - BudgetCheck: {C1, Failed},{C2, Failed} 
+[ 15-AUG-2018 14:46:44 ] - Connection Pool Created 
+[ 15-AUG-2018 14:47:12 ] - BaseTargeting: {C1, Passed},{C2, Passed},{C3, Failed} 
+[ 15-AUG-2018 14:47:12 ] - BudgetCheck: {C1, Passed},{C2, Passed} 
+[ 15-AUG-2018 14:49:29 ] - Connection Pool Created 
+[ 15-AUG-2018 14:49:32 ] - BaseTargeting: {C1, Passed},{C2, Passed},{C3, Failed} 
+[ 15-AUG-2018 14:49:32 ] - BudgetCheck: {C1, Passed},{C2, Passed} 
+[ 15-AUG-2018 14:49:32 ] - BaseBid: {C1, Failed},{C2, Passed} 
+[ 15-AUG-2018 14:49:32 ] - Winner = C2 
+[ 15-AUG-2018 14:58:25 ] - BaseTargeting: {C1, Passed},{C2, Passed},{C3, Failed} 
+[ 15-AUG-2018 14:58:25 ] - BudgetCheck: {C1, Passed},{C2, Passed} 
+[ 15-AUG-2018 14:58:25 ] - BaseBid: {C1, Failed},{C2, Passed} 
+[ 15-AUG-2018 14:58:25 ] - Winner = C2 
+[ 15-AUG-2018 14:58:33 ] - BaseTargeting: {C1, Passed},{C2, Passed},{C3, Failed} 
+[ 15-AUG-2018 14:58:33 ] - BudgetCheck: {C1, Passed},{C2, Passed} 
+[ 15-AUG-2018 14:58:33 ] - BaseBid: {C1, Failed},{C2, Passed} 
+[ 15-AUG-2018 14:58:33 ] - Winner = C2 
+[ 15-AUG-2018 15:43:54 ] - Connection Pool Created 
+[ 15-AUG-2018 16:17:1 ] - BaseTargeting: {C1, Passed},{C2, Passed},{C3, Failed} 
+[ 15-AUG-2018 16:17:1 ] - BudgetCheck: {C1, Passed},{C2, Passed} 
+[ 15-AUG-2018 16:17:1 ] - BaseBid: {C1, Failed},{C2, Passed} 
+[ 15-AUG-2018 16:17:1 ] - Winner = C2 
+[ 15-AUG-2018 16:39:48 ] - Connection Pool Created 
+[ 15-AUG-2018 16:40:25 ] - BaseTargeting: {C1, Passed},{C2, Passed},{C3, Failed} 
+[ 15-AUG-2018 16:40:25 ] - BudgetCheck: {C1, Passed},{C2, Passed} 
+[ 15-AUG-2018 16:40:25 ] - BaseBid: {C1, Failed},{C2, Passed} 
+[ 15-AUG-2018 16:40:25 ] - Winner = C2 
+[ 15-AUG-2018 16:44:16 ] - Connection Pool Created 
+[ 15-AUG-2018 16:48:36 ] - BaseTargeting: {C1, Passed},{C2, Passed},{C3, Failed} 
+[ 15-AUG-2018 16:48:36 ] - BudgetCheck: {C1, Passed},{C2, Passed} 
+[ 15-AUG-2018 16:48:36 ] - BaseBid: {C1, Failed},{C2, Passed} 
+[ 15-AUG-2018 16:48:36 ] - Winner = C2 

@@ -37,9 +37,7 @@ var Logger = function () {
 
     _createClass(Logger, [{
         key: 'logSevere',
-        value: function logSevere(err) {
-            var msg = '[ ' + this.datetime.getCurrentDateTime() + ' ] - ' + err + ' \r\n';
-
+        value: function logSevere(msg) {
             _fs2.default.appendFile(_path2.default.join('src/modules/logs/error.log'), msg, function (error) {
                 if (error) {
                     console.log('ERR - ' + error);
@@ -55,7 +53,8 @@ var Logger = function () {
 
             _fs2.default.appendFile(_path2.default.join('src/modules/logs/server.log'), lgms, function (err) {
                 if (err) {
-                    _this.logSevere(err);
+                    var msge = '[ ' + _this.datetime.getCurrentDateTime() + ' ] - ' + err + ' \r\n';
+                    _this.logSevere(msge);
                 }
             });
         }

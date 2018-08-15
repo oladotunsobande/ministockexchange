@@ -15,9 +15,7 @@ export default class Logger{
         this.datetime = new DateTime();
     }
 
-    logSevere(err){
-        var msg = `[ ${this.datetime.getCurrentDateTime()} ] - ${err} \r\n`;
-
+    logSevere(msg){
         fs.appendFile(path.join('src/modules/logs/error.log'), msg, (error) => {
             if (error){
                 console.log('ERR - '+error);
@@ -30,7 +28,8 @@ export default class Logger{
 
         fs.appendFile(path.join(`src/modules/logs/server.log`), lgms, (err) => {
             if (err){
-                this.logSevere(err);
+                var msge = `[ ${this.datetime.getCurrentDateTime()} ] - ${err} \r\n`;
+                this.logSevere(msge);
             }
         });
     }

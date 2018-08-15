@@ -32,11 +32,23 @@ export default class Core extends Logger{
         return new Promise((resolve, reject) => {
             Promise.all([ this.getEntityId('country', cty_cd), this.getEntityId('category', cat_nme) ])
             .then((ls) => {
+                //console.log('Rsp: '+ls);
                 if(ls[0] > 0 && ls[1] > 0){
                     return this.matchByCountryCategory(ls[0], ls[1]);
                 }
                 else{
-                    let msg = ls[0] == 0 ? `Country, ${cty_cd} does not exist` : `Category, ${cat_nme} does not exist`;
+                    let msg;
+
+                    if(ls[0] == 0 && ls[1] !== 0){
+                        msg =  `Country, ${cty_cd} does not exist`;
+                    }
+                    else if(ls[0] !== 0 && ls[1] == 0){
+                        msg =  `Category, ${cat_nme} does not exist`;
+                    }
+                    else if(ls[0] == 0 && ls[1] == 0){
+                        msg =  `Country, ${cty_cd} and Category, ${cat_nme} does not exist`;
+                    }
+                    
                     resolve(msg);
                 }
             })
@@ -44,18 +56,23 @@ export default class Core extends Logger{
                 let mtch_dt = rs.cpy_dt;
                 let log = rs.log_dt;
 
+                //console.log('targeting: '+JSON.stringify(mtch_dt));
+
                 super.log(log);
 
                 if(mtch_dt.length == 0){
                     resolve('No Companies Passed from Targeting')
                 }
                 else{
-                    return this.bidBudgetCheck(bid_amt, mtch_dt, 'budget');
+                    return this.bidBudgetCheck(bid_amt, JSON.stringify(mtch_dt), 'budget');
                 }
             })
             .then((vl) => {
+                //console.log('cmbk: '+JSON.stringify(vl));
                 let chk_dt = vl.cpy_dt;
                 let lg = vl.log_dt;
+
+                //console.log('budget: '+JSON.stringify(chk_dt));
 
                 super.log(lg);
 
@@ -63,12 +80,14 @@ export default class Core extends Logger{
                     resolve('No Companies Passed from Budget')
                 }
                 else{
-                    return this.bidBudgetCheck(bid_amt, chk_dt, 'bid');
+                    return this.bidBudgetCheck(bid_amt, JSON.stringify(chk_dt), 'bid');
                 }
             })
             .then((res) => {
                 let cp_ls = res.cpy_dt;
                 let lgg = res.log_dt;
+
+                //console.log('bid: '+JSON.stringify(cp_ls));
 
                 super.log(lgg);
 
@@ -101,6 +120,7 @@ export default class Core extends Logger{
 
             this.callQuery(sql, prm, 'bidBudgetCheck')
             .then((res) => {
+                //console.log('bid check rsp: '+JSON.stringify(res));
                 resolve(this.formatValue(res));
             })
             .catch((err) => {
@@ -131,6 +151,7 @@ export default class Core extends Logger{
 
             this.callQuery(sql, prm, 'matchByCountryCategory')
             .then((res) => {
+                //console.log('mtch rsp: '+JSON.stringify(res));
                 resolve(this.formatValue(res));
             })
             .catch((err) => {

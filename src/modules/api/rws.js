@@ -17,7 +17,7 @@ export default class Rws{
         return new Promise((resolve, reject) => {
             let cre = new Core(this.conn);
 
-            cre.getBestCompany(bd_amt, cty_id, cat_nm)
+            cre.getBestCompany(Number(bd_amt), cty_id, cat_nm)
             .then((rsp) => {
                 resolve(rsp);
             })

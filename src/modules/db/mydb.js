@@ -47,7 +47,7 @@ export default class MyDb extends Logger{
                     reject(false);
                 }
                 else{
-                    var msg = `[ ${this.datetime.getCurrentDateTime()} ] - Connection Pool Created \r\n`;
+                    var msg = `Connection Pool Created`;
                     super.log(msg);
                     resolve(cnn);
                 }

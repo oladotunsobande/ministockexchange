@@ -80,7 +80,7 @@ var MyDb = function (_Logger) {
                         _get(MyDb.prototype.__proto__ || Object.getPrototypeOf(MyDb.prototype), 'handleError', _this2).call(_this2, err);
                         reject(false);
                     } else {
-                        var msg = '[ ' + _this2.datetime.getCurrentDateTime() + ' ] - Connection Pool Created \r\n';
+                        var msg = 'Connection Pool Created';
                         _get(MyDb.prototype.__proto__ || Object.getPrototypeOf(MyDb.prototype), 'log', _this2).call(_this2, msg);
                         resolve(cnn);
                     }

@@ -35,7 +35,7 @@ var Rws = function () {
             return new Promise(function (resolve, reject) {
                 var cre = new _core2.default(_this.conn);
 
-                cre.getBestCompany(bd_amt, cty_id, cat_nm).then(function (rsp) {
+                cre.getBestCompany(Number(bd_amt), cty_id, cat_nm).then(function (rsp) {
                     resolve(rsp);
                 }).catch(function (err) {
                     reject(err);

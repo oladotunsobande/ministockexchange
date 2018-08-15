@@ -62,37 +62,54 @@ var Core = function (_Logger) {
 
             return new Promise(function (resolve, reject) {
                 Promise.all([_this2.getEntityId('country', cty_cd), _this2.getEntityId('category', cat_nme)]).then(function (ls) {
+                    //console.log('Rsp: '+ls);
                     if (ls[0] > 0 && ls[1] > 0) {
                         return _this2.matchByCountryCategory(ls[0], ls[1]);
                     } else {
-                        var msg = ls[0] == 0 ? 'Country, ' + cty_cd + ' does not exist' : 'Category, ' + cat_nme + ' does not exist';
+                        var msg = void 0;
+
+                        if (ls[0] == 0 && ls[1] !== 0) {
+                            msg = 'Country, ' + cty_cd + ' does not exist';
+                        } else if (ls[0] !== 0 && ls[1] == 0) {
+                            msg = 'Category, ' + cat_nme + ' does not exist';
+                        } else if (ls[0] == 0 && ls[1] == 0) {
+                            msg = 'Country, ' + cty_cd + ' and Category, ' + cat_nme + ' does not exist';
+                        }
+
                         resolve(msg);
                     }
                 }).then(function (rs) {
                     var mtch_dt = rs.cpy_dt;
                     var log = rs.log_dt;
 
+                    //console.log('targeting: '+JSON.stringify(mtch_dt));
+
                     _get(Core.prototype.__proto__ || Object.getPrototypeOf(Core.prototype), 'log', _this2).call(_this2, log);
 
                     if (mtch_dt.length == 0) {
                         resolve('No Companies Passed from Targeting');
                     } else {
-                        return _this2.bidBudgetCheck(bid_amt, mtch_dt, 'budget');
+                        return _this2.bidBudgetCheck(bid_amt, JSON.stringify(mtch_dt), 'budget');
                     }
                 }).then(function (vl) {
+                    //console.log('cmbk: '+JSON.stringify(vl));
                     var chk_dt = vl.cpy_dt;
                     var lg = vl.log_dt;
+
+                    //console.log('budget: '+JSON.stringify(chk_dt));
 
                     _get(Core.prototype.__proto__ || Object.getPrototypeOf(Core.prototype), 'log', _this2).call(_this2, lg);
 
                     if (chk_dt.length == 0) {
                         resolve('No Companies Passed from Budget');
                     } else {
-                        return _this2.bidBudgetCheck(bid_amt, chk_dt, 'bid');
+                        return _this2.bidBudgetCheck(bid_amt, JSON.stringify(chk_dt), 'bid');
                     }
                 }).then(function (res) {
                     var cp_ls = res.cpy_dt;
                     var lgg = res.log_dt;
+
+                    //console.log('bid: '+JSON.stringify(cp_ls));
 
                     _get(Core.prototype.__proto__ || Object.getPrototypeOf(Core.prototype), 'log', _this2).call(_this2, lgg);
 
@@ -127,6 +144,7 @@ var Core = function (_Logger) {
                 var prm = [prs_typ, bid_amt, cpy_dt];
 
                 _this3.callQuery(sql, prm, 'bidBudgetCheck').then(function (res) {
+                    //console.log('bid check rsp: '+JSON.stringify(res));
                     resolve(_this3.formatValue(res));
                 }).catch(function (err) {
                     reject(99);
@@ -159,6 +177,7 @@ var Core = function (_Logger) {
                 var prm = [cty_id, cat_id];
 
                 _this5.callQuery(sql, prm, 'matchByCountryCategory').then(function (res) {
+                    //console.log('mtch rsp: '+JSON.stringify(res));
                     resolve(_this5.formatValue(res));
                 }).catch(function (err) {
                     reject(99);

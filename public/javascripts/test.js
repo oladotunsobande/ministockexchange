@@ -13,17 +13,17 @@ function testAsync(done, fn) {
 }
 
 describe('Test REST api', function() {
-    it('should return correct division result', (done) => {
+    it('should return correct company', (done) => {
         this.timeout(15000);
 
         chai.request(server)
-        .get('/api/divide')
-        .query({number: 10, divider: 2})
+        .get('/api/trade')
+        .query({CountryCode: 'US', Category: 'Finance', BaseBid: '10'})
         .end((err, res) => {
-            //console.log('Resp 1: '+JSON.stringify(res));
             testAsync(done, function(){
+                //console.log('Resp 1: '+JSON.stringify(res));
                 expect(res).to.have.status(200);
-                assert.equal(5, res.text);
+                assert.equal('Response = C2', res.body.message);
                 done();
             }.bind(res));
         });
