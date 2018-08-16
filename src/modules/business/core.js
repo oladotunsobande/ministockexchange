@@ -61,7 +61,7 @@ export default class Core extends Logger{
                 super.log(log);
 
                 if(mtch_dt.length == 0){
-                    resolve('No Companies Passed from Targeting')
+                    resolve('No Companies Passed from Targeting');
                 }
                 else{
                     return this.bidBudgetCheck(bid_amt, JSON.stringify(mtch_dt), 'budget');
@@ -77,30 +77,28 @@ export default class Core extends Logger{
                 super.log(lg);
 
                 if(chk_dt.length == 0){
-                    resolve('No Companies Passed from Budget')
+                    resolve('No Companies Passed from Budget');
                 }
                 else{
-                    return this.bidBudgetCheck(bid_amt, JSON.stringify(chk_dt), 'bid');
+                    return this.bidBudgetCheck(bid_amt, JSON.stringify(chk_dt), "bid");
                 }
             })
-            .then((res) => {
-                let cp_ls = res.cpy_dt;
-                let lgg = res.log_dt;
+            .then((rsp) => {
+                let cpls = rsp.cpy_dt;
+                let lgg = rsp.log_dt;
 
-                //console.log('bid: '+JSON.stringify(cp_ls));
+                //console.log('bid: '+JSON.stringify(cpls));
 
                 super.log(lgg);
 
-                if(cp_ls.length == 0){
-                    resolve('No Companies Passed from BaseBid Check')
+                if(cpls.length == 0){
+                    resolve('No Companies Passed from BaseBid Check');
                 }
                 else{
-                    return this.getWinner(cp_ls);
+                    let cpy = this.getWinner(cpls);
+                    super.log(`Winner = ${cpy}`);
+                    resolve(`Response = ${cpy}`);
                 }
-            })
-            .then((cpy) => {
-                super.log(`Winner = ${cpy}`);
-                resolve(`Response = ${cpy}`);
             })
             .catch((err) => {
                 reject(err);

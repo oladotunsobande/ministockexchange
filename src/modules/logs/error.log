@@ -1,5 +1,0 @@
-[ 15-AUG-2018 13:23:51 ] - Error: ER_SP_WRONG_NO_OF_ARGS: Incorrect number of arguments for PROCEDURE exchg.bgt_bid_sff; expected 5, got 6 
-[ 15-AUG-2018 13:23:51 ] - undefined 
-[ 15-AUG-2018 13:23:51 ] - (bidBudgetCheck) - Error: ER_SP_WRONG_NO_OF_ARGS: Incorrect number of arguments for PROCEDURE exchg.bgt_bid_sff; expected 5, got 6 
-[ 15-AUG-2018 13:27:33 ] - (bidBudgetCheck) - ERR-1222 : The used SELECT statements have a different number of columns 
-[ 15-AUG-2018 14:47:12 ] - (bidBudgetCheck) - ERR-1054 : Unknown column 'cpy_cde' in 'field list' 

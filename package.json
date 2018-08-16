@@ -3,6 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
+    "test": "mocha ./dist/test/**/*.js",
     "build": "babel ./src --out-dir ./dist && node ./dist/server"
   },
   "dependencies": {
