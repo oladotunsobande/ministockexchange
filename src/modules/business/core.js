@@ -1,6 +1,6 @@
 /*
  *  APP:        Mini Stock Exchange
- *  MODULE:     Stock Trading 
+ *  MODULE:     Stock Trading Module
  * 
  *  DEVELOPER:  Oladotun Sobande
  *  CREATED ON: 13th August 2018
@@ -32,7 +32,6 @@ export default class Core extends Logger{
         return new Promise((resolve, reject) => {
             Promise.all([ this.getEntityId('country', cty_cd), this.getEntityId('category', cat_nme) ])
             .then((ls) => {
-                //console.log('Rsp: '+ls);
                 if(ls[0] > 0 && ls[1] > 0){
                     return this.matchByCountryCategory(ls[0], ls[1]);
                 }
@@ -56,8 +55,6 @@ export default class Core extends Logger{
                 let mtch_dt = rs.cpy_dt;
                 let log = rs.log_dt;
 
-                //console.log('targeting: '+JSON.stringify(mtch_dt));
-
                 super.log(log);
 
                 if(mtch_dt.length == 0){
@@ -68,11 +65,8 @@ export default class Core extends Logger{
                 }
             })
             .then((vl) => {
-                //console.log('cmbk: '+JSON.stringify(vl));
                 let chk_dt = vl.cpy_dt;
                 let lg = vl.log_dt;
-
-                //console.log('budget: '+JSON.stringify(chk_dt));
 
                 super.log(lg);
 
@@ -87,8 +81,6 @@ export default class Core extends Logger{
                 let cpls = rsp.cpy_dt;
                 let lgg = rsp.log_dt;
 
-                //console.log('bid: '+JSON.stringify(cpls));
-
                 super.log(lgg);
 
                 if(cpls.length == 0){
@@ -96,8 +88,13 @@ export default class Core extends Logger{
                 }
                 else{
                     let cpy = this.getWinner(cpls);
-                    super.log(`Winner = ${cpy}`);
-                    resolve(`Response = ${cpy}`);
+                    return Promise.all([ cpy, this.updateCompanyBudget(cpy.cpy_rk, cpy.bd_prc) ]);
+                }
+            })
+            .then((vle) => {
+                if(vle[1] == 1){
+                    super.log(`Winner = ${vle[0].cpy_id}`);
+                    resolve(`Response = ${vle[0].cpy_id}`);
                 }
             })
             .catch((err) => {
@@ -108,7 +105,22 @@ export default class Core extends Logger{
 
     getWinner(lst){
         let srt_lst = lst.sort((a,b) => { return b.bd_prc - a.bd_prc; });
-        return srt_lst[0].cpy_id;
+        return srt_lst[0];
+    }
+
+    updateCompanyBudget(cpy_rk, bd_amt){
+        return new Promise((resolve, reject) => {
+            let sql = 'CALL upd_cpy_bgt(?,?,@out,@err); SELECT @out as rs, @err as erm;';
+            let prm = [ cpy_rk, bd_amt ];
+
+            this.callQuery(sql, prm, 'updateCompanyBudget')
+            .then((res) => {
+                resolve(res);
+            })
+            .catch((err) => {
+                reject(err);
+            });
+        });
     }
 
     bidBudgetCheck(bid_amt, cpy_dt, prs_typ){
@@ -118,11 +130,10 @@ export default class Core extends Logger{
 
             this.callQuery(sql, prm, 'bidBudgetCheck')
             .then((res) => {
-                //console.log('bid check rsp: '+JSON.stringify(res));
                 resolve(this.formatValue(res));
             })
             .catch((err) => {
-                reject(99);
+                reject(err);
             });
         });
     }
@@ -137,7 +148,7 @@ export default class Core extends Logger{
                 resolve(res);
             })
             .catch((err) => {
-                reject(99);
+                reject(err);
             });
         });
     }
@@ -149,11 +160,10 @@ export default class Core extends Logger{
 
             this.callQuery(sql, prm, 'matchByCountryCategory')
             .then((res) => {
-                //console.log('mtch rsp: '+JSON.stringify(res));
                 resolve(this.formatValue(res));
             })
             .catch((err) => {
-                reject(99);
+                reject(err);
             });
         });
     }

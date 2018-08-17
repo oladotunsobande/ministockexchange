@@ -1,3 +1,11 @@
+/*
+ *  APP:        Mini Stock Exchange
+ *  MODULE:     Web Server Config Module
+ * 
+ *  DEVELOPER:  Oladotun Sobande
+ *  CREATED ON: 13th August 2018
+ * */
+
 require('dotenv').config();
 
 import express from 'express';

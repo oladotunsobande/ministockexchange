@@ -1,3 +1,11 @@
+/*
+ *  APP:        Mini Stock Exchange
+ *  MODULE:     Integration Tesing Script 
+ * 
+ *  DEVELOPER:  Oladotun Sobande
+ *  CREATED ON: 13th August 2018
+ * */
+
 var server = 'http://127.0.0.1:3000';
 var expect = chai.expect;
 var assert = chai.assert;
@@ -21,7 +29,6 @@ describe('Test Mini Stock Exchange REST API', function() {
         .query({CountryCode: 'US', Category: 'Finance', BaseBid: '10'})
         .end((err, res) => {
             testAsync(done, function(){
-                //console.log('Resp 1: '+JSON.stringify(res));
                 expect(res).to.have.status(200);
                 assert.equal('Response = C2', res.body.message);
                 done();
@@ -36,7 +43,6 @@ describe('Test Mini Stock Exchange REST API', function() {
         .get('/api/trade')
         .query({CountryCode: '', Category: '', BaseBid: ''})
         .end((err, res) => {
-            //console.log('Resp 2: '+JSON.stringify(res));
             testAsync(done, function(){
                 expect(res).to.have.status(200);
                 assert.equal('Provide values for BaseBid, Category and CountryCode', res.body.message);
@@ -52,7 +58,6 @@ describe('Test Mini Stock Exchange REST API', function() {
         .get('/api/trade')
         .query({CountryCode: '', Category: 'Finance', BaseBid: '10'})
         .end((err, res) => {
-            //console.log('Resp 2: '+JSON.stringify(res));
             testAsync(done, function(){
                 expect(res).to.have.status(200);
                 assert.equal('Provide value for CountryCode', res.body.message);
@@ -68,7 +73,6 @@ describe('Test Mini Stock Exchange REST API', function() {
         .get('/api/trade')
         .query({CountryCode: 'US', Category: '', BaseBid: '10'})
         .end((err, res) => {
-            //console.log('Resp 2: '+JSON.stringify(res));
             testAsync(done, function(){
                 expect(res).to.have.status(200);
                 assert.equal('Provide value for Category', res.body.message);
@@ -84,7 +88,6 @@ describe('Test Mini Stock Exchange REST API', function() {
         .get('/api/trade')
         .query({CountryCode: 'US', Category: 'Finance', BaseBid: ''})
         .end((err, res) => {
-            //console.log('Resp 2: '+JSON.stringify(res));
             testAsync(done, function(){
                 expect(res).to.have.status(200);
                 assert.equal('Provide value for BaseBid', res.body.message);
@@ -100,7 +103,6 @@ describe('Test Mini Stock Exchange REST API', function() {
         .get('/api/trade')
         .query({CountryCode: 'CA', Category: 'Finance', BaseBid: '10'})
         .end((err, res) => {
-            //console.log('Resp 2: '+JSON.stringify(res));
             testAsync(done, function(){
                 expect(res).to.have.status(200);
                 assert.equal('Country, CA does not exist', res.body.message);
@@ -116,7 +118,6 @@ describe('Test Mini Stock Exchange REST API', function() {
         .get('/api/trade')
         .query({CountryCode: 'US', Category: 'Production', BaseBid: '10'})
         .end((err, res) => {
-            //console.log('Resp 2: '+JSON.stringify(res));
             testAsync(done, function(){
                 expect(res).to.have.status(200);
                 assert.equal('Category, Production does not exist', res.body.message);
@@ -132,7 +133,6 @@ describe('Test Mini Stock Exchange REST API', function() {
         .get('/api/trade')
         .query({CountryCode: 'CA', Category: 'Production', BaseBid: '10'})
         .end((err, res) => {
-            //console.log('Resp 2: '+JSON.stringify(res));
             testAsync(done, function(){
                 expect(res).to.have.status(200);
                 assert.equal('Country, CA and Category, Production does not exist', res.body.message);
@@ -148,7 +148,6 @@ describe('Test Mini Stock Exchange REST API', function() {
         .get('/api/trade')
         .query({CountryCode: 'CA', Category: 'Production'})
         .end((err, res) => {
-            //console.log('Resp 2: '+JSON.stringify(res));
             testAsync(done, function(){
                 expect(res).to.have.status(500);
                 done();

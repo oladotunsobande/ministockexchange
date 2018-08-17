@@ -1,3 +1,11 @@
+/*
+ *  APP:        Mini Stock Exchange
+ *  MODULE:     Path Router
+ * 
+ *  DEVELOPER:  Oladotun Sobande
+ *  CREATED ON: 13th August 2018
+ * */
+
 import express from 'express';
 
 var router = express.Router();

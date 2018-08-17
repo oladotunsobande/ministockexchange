@@ -1,8 +1,12 @@
 #!/usr/bin/env node
 
-/**
- * Module dependencies.
- */
+/*
+ *  APP:        Mini Stock Exchange
+ *  MODULE:     Web Server 
+ * 
+ *  DEVELOPER:  Oladotun Sobande
+ *  CREATED ON: 13th August 2018
+ * */
 
 import app from './app';
 var debug = require('debug')('miniexchangeapp:server');
