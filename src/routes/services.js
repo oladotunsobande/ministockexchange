@@ -43,24 +43,9 @@ initDb()
 
 /*
 *==================================================
-* API Endpoints 
+* API Endpoint
 *==================================================
 */
-
-router.get('/divide', (req, res, next) => {
-    let num = req.query.number;
-    let dvdr = req.query.divider;
-    let rs = Number(num) / Number(dvdr);
-
-    console.log('type: '+typeof rs+' ans: '+String(rs));
-
-    if(rs !== Infinity){
-        res.status(200).send(String(rs));
-    }
-    else if(rs == Infinity){
-        res.status(500).send(String(rs));
-    }
-});
 
 router.get('/trade', (req, res, next) => {
     let cty_cd = req.query.CountryCode;
